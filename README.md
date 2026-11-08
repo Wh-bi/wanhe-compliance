@@ -29,6 +29,11 @@ wanhe-compliance check "本产品全网最好，100%有效"
 ## Rules
 `rules()` returns the machine-readable rule catalog (80 groups; Chinese groups cite PRC Advertising Law article numbers).
 
+## Benchmark pages (original data)
+- 2026 ad-law benchmark: https://wh-bi.github.io/wanhe-compliance/
+- Medical/beauty test: https://wh-bi.github.io/wanhe-compliance/medical-beauty-2026.html
+- Negative cases: https://wh-bi.github.io/wanhe-compliance/negative-cases-2026.html
+
 ## Links
 - Docs / OpenAPI: https://wanhetools.top/openapi.json
 - Site: https://wanhetools.top
