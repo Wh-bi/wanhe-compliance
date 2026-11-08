@@ -1,0 +1,12 @@
+# Wanhe Compliance — original data
+
+> Chinese advertising-law & AI-labeling compliance checks. Technical verification, not legal advice.
+
+## Benchmark (2026)
+- 52 cases, 0 false negatives, 0 false positives, 80 rule groups (63 zh + 17 en), ~12ms/check
+- https://wh-bi.github.io/wanhe-compliance/
+- https://wh-bi.github.io/wanhe-compliance/medical-beauty-2026.html
+- https://wh-bi.github.io/wanhe-compliance/negative-cases-2026.html
+
+## SDK
+- https://github.com/Wh-bi/wanhe-compliance
