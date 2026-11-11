@@ -21,7 +21,7 @@ print(check("本产品全网最好，100%有效"))
 wanhe-compliance check "本产品全网最好，100%有效"
 ```
 
-## Offline package (0.2.0)
+## Offline package (0.2.1)
 - 80 bundled rule groups; no network, no API key, no upload
 - wheel: GitHub Releases（PyPI 上传待账号）
 - `pip install` 将从 PyPI 提供；当前可用 `git clone` + `PYTHONPATH` 或 GitHub Release wheel
