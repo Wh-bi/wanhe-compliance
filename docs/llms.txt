@@ -10,3 +10,7 @@
 
 ## SDK
 - https://github.com/Wh-bi/wanhe-compliance
+
+## Contact
+- Free email self-check: hello@wanhetools.top (text only; free, no delivery promise)
+- Public site pending ICP filing; offline package: https://github.com/Wh-bi/wanhe-compliance/releases
