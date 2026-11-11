@@ -21,10 +21,13 @@ print(check("本产品全网最好，100%有效"))
 wanhe-compliance check "本产品全网最好，100%有效"
 ```
 
-## Free tier
-- 2,000 characters per request
-- 30 requests per hour per IP
-- No signup required for the free tier
+## Offline package (0.2.0)
+- 80 bundled rule groups; no network, no API key, no upload
+- wheel: GitHub Releases（PyPI 上传待账号）
+- `pip install` 将从 PyPI 提供；当前可用 `git clone` + `PYTHONPATH` 或 GitHub Release wheel
+
+## Contact
+- 免费邮件自查：`hello@wanhetools.top`（贴文案，自动回命中词+法条+规则ID；免费、不承诺交付）
 
 ## Rules
 `rules()` returns the machine-readable rule catalog (80 groups; Chinese groups cite PRC Advertising Law article numbers).
@@ -35,8 +38,8 @@ wanhe-compliance check "本产品全网最好，100%有效"
 - Negative cases: https://wh-bi.github.io/wanhe-compliance/negative-cases-2026.html
 
 ## Links
-- Docs / OpenAPI: https://wanhetools.top/openapi.json
-- Site: https://wanhetools.top
+- Pages: https://wh-bi.github.io/wanhe-compliance/
+- Contact: hello@wanhetools.top
 
 ## Notes
 - Technical checks only; not legal advice.
