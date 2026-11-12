@@ -1,0 +1,135 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "Wanhe Compliance API",
+    "version": "1.0.0",
+    "description": "Chinese advertising-law / content / AI-labeling checks with statutory citations and archivable evidence (rule_id, content SHA256, generated_at, rules_version). Offline package: https://github.com/Wh-bi/wanhe-compliance/releases. Public endpoint pending ICP filing.",
+    "contact": {"email": "hello@wanhetools.top"}
+  },
+  "servers": [
+    {"url": "https://wanhetools.top", "description": "Primary (pending ICP filing)"}
+  ],
+  "paths": {
+    "/api/v1/health": {
+      "get": {
+        "summary": "Health",
+        "responses": {"200": {"description": "OK"}}
+      }
+    },
+    "/api/v1/rules": {
+      "get": {
+        "summary": "Machine-readable rule catalog (80 groups, stable rule_id)",
+        "responses": {
+          "200": {
+            "description": "Rule groups",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/RuleCatalog"}}}
+          }
+        }
+      }
+    },
+    "/api/v1/check": {
+      "post": {
+        "summary": "Check one text (<=20000 chars)",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["text"],
+                "properties": {
+                  "text": {"type": "string"},
+                  "lang": {"type": "string", "enum": ["auto", "zh", "en"], "default": "auto"}
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Check result with evidence",
+            "content": {"application/json": {"schema": {"$ref": "#/components/schemas/CheckResult"}}}
+          }
+        }
+      }
+    },
+    "/api/v1/check-batch": {
+      "post": {
+        "summary": "Check up to 200 items",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["items"],
+                "properties": {
+                  "items": {"type": "array", "maxItems": 200, "items": {"type": "object", "required": ["text"], "properties": {"id": {"type": "string"}, "text": {"type": "string", "maxLength": 2000}}}}
+                }
+              }
+            }
+          }
+        },
+        "responses": {"200": {"description": "Batch result"}}
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Issue": {
+        "type": "object",
+        "properties": {
+          "type": {"type": "string"},
+          "matched": {"type": "string"},
+          "position": {"type": "string"},
+          "basis": {"type": "string"},
+          "suggestion": {"type": "string"},
+          "severity": {"type": "string"},
+          "rule_id": {"type": "string", "description": "Stable rule id, e.g. R018"}
+        }
+      },
+      "Evidence": {
+        "type": "object",
+        "properties": {
+          "content_sha256": {"type": "string"},
+          "generated_at": {"type": "string", "format": "date-time"},
+          "engine_version": {"type": "string"},
+          "rules_version": {"type": "string"},
+          "rule_ids": {"type": "array", "items": {"type": "string"}},
+          "notice": {"type": "string"}
+        }
+      },
+      "RuleGroup": {
+        "type": "object",
+        "properties": {
+          "rule_id": {"type": "string"},
+          "type": {"type": "string"},
+          "severity": {"type": "string"},
+          "basis": {"type": "string"},
+          "suggestion": {"type": "string"},
+          "locale": {"type": "string"}
+        }
+      },
+      "RuleCatalog": {
+        "type": "object",
+        "properties": {
+          "version": {"type": "string"},
+          "rules_version": {"type": "string"},
+          "group_count": {"type": "integer"},
+          "groups": {"type": "array", "items": {"$ref": "#/components/schemas/RuleGroup"}}
+        }
+      },
+      "CheckResult": {
+        "type": "object",
+        "properties": {
+          "ok": {"type": "boolean"},
+          "summary": {"type": "string"},
+          "counts": {"type": "object"},
+          "issues": {"type": "array", "items": {"$ref": "#/components/schemas/Issue"}},
+          "evidence": {"$ref": "#/components/schemas/Evidence"},
+          "disclaimer": {"type": "string"}
+        }
+      }
+    }
+  }
+}
