@@ -39,6 +39,7 @@ wanhe-compliance check "本产品全网最好，100%有效"
 
 ## Links
 - Pages: https://wh-bi.github.io/wanhe-compliance/
+- OpenAPI 3.1: https://wh-bi.github.io/wanhe-compliance/openapi.json
 - Contact: hello@wanhetools.top
 
 ## Notes
