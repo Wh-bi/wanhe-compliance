@@ -19,3 +19,6 @@
 - GET /api/v1/rules: 80 rule groups with stable rule_id (R001-R080) and rules_version
 - POST /api/v1/check: each issue includes rule_id; evidence includes content_sha256/generated_at
 - Offline package 0.2.1: same rule_id/evidence fields, no network
+
+## API spec
+- OpenAPI 3.1: https://wh-bi.github.io/wanhe-compliance/openapi.json
