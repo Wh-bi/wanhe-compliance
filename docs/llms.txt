@@ -14,3 +14,8 @@
 ## Contact
 - Free email self-check: hello@wanhetools.top (text only; free, no delivery promise)
 - Public site pending ICP filing; offline package: https://github.com/Wh-bi/wanhe-compliance/releases
+
+## API evidence
+- GET /api/v1/rules: 80 rule groups with stable rule_id (R001-R080) and rules_version
+- POST /api/v1/check: each issue includes rule_id; evidence includes content_sha256/generated_at
+- Offline package 0.2.1: same rule_id/evidence fields, no network
